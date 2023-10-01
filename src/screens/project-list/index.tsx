@@ -1,3 +1,4 @@
+// 这个主题文件的作用就是展示用户列表信息
 import React, { useEffect, useState } from 'react'
 import qs from 'qs';
 import List from './List'
@@ -12,17 +13,14 @@ export default function ProjectListScreen() {
     personId: '',
   })
 
-  const apiUrl = process.env.REACT_APP_URL
+  const apiUrl = process.env.REACT_APP_API_URL
   const debounceParam = useDebounce(param, 1000)
-  console.log(apiUrl);
   
   // 请求数据
   useMount(() => {
     fetch(`${apiUrl}/users`).then(async response => {
       if (response.ok) {
-        setUsers(await response.json())
-        console.log('hahah');
-        
+        setUsers(await response.json())      
       }
     })
   })
@@ -35,6 +33,8 @@ export default function ProjectListScreen() {
       if (response.ok) {
         setList(await response.json())
       }
+    }).catch(()=>{
+      alert("error happen")
     })
   }, [debounceParam])
 

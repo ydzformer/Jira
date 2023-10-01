@@ -2,15 +2,16 @@ import { useEffect, useState } from "react"
 import React from 'react'
 
 // user是什么类型的呢，这个一般是要去看官方文档的
-export interface User{
-    id:string;
-    name:string;
-    email:string;
-    title:string;
-    organization:string;
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  organization: string;
+  token: string;
 }
 
-interface SearchPanelProps{
+export interface SearchPanelProps{
     users:User[],
     param:{
         name:string,
